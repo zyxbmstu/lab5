@@ -12,6 +12,8 @@ import bmstu.iu9.requests.Request;
 import akka.stream.javadsl.Flow;
 
 import java.time.Duration;
+import java.util.Collections;
+
 
 
 public class Ping {
@@ -39,7 +41,9 @@ public class Ping {
                     return new Request(url, count);
                 })
                 .mapAsync(ASYNC_NUMBER, (request) -> Patterns.ask(cacheActor, request, TIMEOUT)
-                        .thenC)
+                        .thenCompose((requestResult) -> {
+
+                        }))
     }
 
 }
