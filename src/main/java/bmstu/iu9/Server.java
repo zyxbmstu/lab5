@@ -2,6 +2,7 @@ package bmstu.iu9;
 
 import akka.actor.ActorSystem;
 import akka.http.javadsl.Http;
+import akka.stream.ActorMaterializer;
 
 import java.io.IOException;
 
@@ -14,7 +15,8 @@ public class Server {
 
         ActorSystem system = ActorSystem.create(ACTOR_SYSTEM_NAME);
         final Http http = Http.get(system);
-        final Ac
+        final ActorMaterializer materializer = ActorMaterializer.create(system);
+        
     }
 
 }
