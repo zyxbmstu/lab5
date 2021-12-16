@@ -1,7 +1,6 @@
 package bmstu.iu9;
 
 import akka.actor.ActorSystem;
-import akka.http.scaladsl.Http;
 
 import java.io.IOException;
 
@@ -13,7 +12,8 @@ public class Server {
         System.out.println("Start!");
 
         ActorSystem system = ActorSystem.create(ACTOR_SYSTEM_NAME);
-        final Http
+        final Http http = Http.get(system);
+        final Ac
     }
 
 }
