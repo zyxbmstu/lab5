@@ -40,6 +40,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>
   <component name="RunManager">
@@ -65,6 +66,31 @@
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
+        <entry key="387371cd-4512-40bd-8e24-e10ec7109606">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
         <entry key="MAIN">
           <value>
             <State />
@@ -99,6 +125,7 @@
     </option>
     <option name="OPEN_GENERIC_TABS">
       <map>
+        <entry key="387371cd-4512-40bd-8e24-e10ec7109606" value="TOOL_WINDOW" />
         <entry key="e45927a2-fefa-420d-b1aa-33ac90d30baa" value="TOOL_WINDOW" />
       </map>
     </option>

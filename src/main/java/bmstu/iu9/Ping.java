@@ -11,7 +11,6 @@ import akka.http.javadsl.model.*;
 import akka.stream.javadsl.Keep;
 import akka.stream.javadsl.Sink;
 import akka.stream.javadsl.Source;
-import bmstu.iu9.CacheActor;
 import bmstu.iu9.requests.Answer;
 import bmstu.iu9.requests.Request;
 import akka.stream.javadsl.Flow;
@@ -26,7 +25,7 @@ import java.util.concurrent.CompletionStage;
 
 public class Ping {
 
-    private ActorRef cacheActor;
+    private final ActorRef cacheActor;
 
     private static final String URL_NAME_PARAM = "testUrl";
     private static final String DEFAULT_URL_NAME_PARAM = "";
@@ -35,7 +34,7 @@ public class Ping {
     private static final Duration TIMEOUT = Duration.ofMillis(5000);
     private static final int ASYNC_NUMBER = 6;
     private static final Long ZERO= 0L;
-    private AsyncHttpClient asyncHttpClient = Dsl.asyncHttpClient();
+    private final AsyncHttpClient asyncHttpClient = Dsl.asyncHttpClient();
 
     public Ping(ActorSystem system) {
         cacheActor = system.actorOf(Props.create(CacheActor.class));
