@@ -33,7 +33,7 @@ public class Server {
                 ConnectHttp.toHost(HOST, PORT),
                 materializer
         );
-        System.out.println("Server: " + HOST + ":" + PORT);
+        System.out.println("Server started on: " + HOST + ":" + PORT);
         System.in.read();
         binding
                 .thenCompose(ServerBinding::unbind)
