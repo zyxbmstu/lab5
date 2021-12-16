@@ -15,7 +15,7 @@ public class Answer {
     }
 
     public Long getResponseTime() {
-        return responseTime
+        return responseTime;
     }
 
 }
