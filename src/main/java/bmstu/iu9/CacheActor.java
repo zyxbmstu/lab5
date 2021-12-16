@@ -20,6 +20,10 @@ public class CacheActor extends AbstractActor {
                     Long requestResult = cache.getOrDefault(request.getUrl(), DEFAULT_VALUE);
                     sender().tell(new Answer(request.getUrl(), requestResult), self());
                 })
+                .match(Answer.class, (requestAnswer) ->
+                    cache.put(requestAnswer.getUrl(), requestAnswer.getResponseTime())
+                )
+                .build();
     }
 
 }
