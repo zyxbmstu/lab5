@@ -8,6 +8,7 @@ import akka.http.javadsl.model.Query;
 import akka.pattern.Patterns;
 import akka.stream.ActorMaterializer;
 import akka.http.javadsl.model.*;
+import akka.stream.Materializer;
 import akka.stream.javadsl.Keep;
 import akka.stream.javadsl.Sink;
 import akka.stream.javadsl.Source;
@@ -55,7 +56,7 @@ public class Ping {
                 .toMat(Sink.fold(ZERO, Long::sum), Keep.right());
     }
 
-    private CompletionStage<Answer> ping(Request request, ActorMaterializer materializer) {
+    private CompletionStage<Answer> ping(Request request, Materializer materializer) {
         return Source
                 .from(Collections.singletonList(request))
                 .toMat(sink(), Keep.right())
