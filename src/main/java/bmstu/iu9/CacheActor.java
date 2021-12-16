@@ -9,14 +9,15 @@ import java.util.Map;
 
 public class CacheActor extends AbstractActor {
 
-    private static final Long defaultValue = -1L;
+    private static final Long DEFAULT_VALUE = -1L;
     private Map<String, Long> cache = new HashMap<>();
 
     @Override
-    public Receive createReseive() {
+    public Receive createReceive() {
         return ReceiveBuilder.create()
                 .match(Request.class, (request) -> {
-                    Long requestResult = cache.getOrDefault()
+                    Long requestResult = cache.getOrDefault(request.getUrl(), DEFAULT_VALUE);
+                    sender().tell(new );
                 })
     }
 
