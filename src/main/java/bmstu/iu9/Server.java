@@ -21,8 +21,6 @@ public class Server {
 
     public static void main(String[] args) throws IOException {
 
-        //TEST COMMIT TIME------------
-
         System.out.println("Start!");
 
         ActorSystem system = ActorSystem.create(ACTOR_SYSTEM_NAME);
