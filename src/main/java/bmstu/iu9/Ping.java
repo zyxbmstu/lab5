@@ -5,16 +5,25 @@ import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
 import akka.http.javadsl.model.Query;
+import akka.pattern.Patterns;
 import akka.stream.ActorMaterializer;
-import akka.stream.javadsl.Flow;
 import akka.http.javadsl.model.*;
+import bmstu.iu9.requests.Request;
+import akka.stream.javadsl.Flow;
+
+import java.time.Duration;
 
 
 public class Ping {
 
     private ActorRef cacheActor;
 
-    private static final String URL_NAME = "url";
+    private static final String URL_NAME_PARAM = "testUrl";
+    private static final String DEFAULT_URL_NAME_PARAM = "";
+    private static final String COUNT_PARAM = "count";
+    private static final String DEFAULT_COUNT_PARAM = "-1";
+    private static final Duration TIMEOUT = Duration.ofMillis(5000);
+    private static final int ASYNC_NUMBER = 6;
 
     public Ping(ActorSystem system) {
         cacheActor = system.actorOf(Props.create(CacheActor.class));
@@ -25,8 +34,12 @@ public class Ping {
                 .of(HttpRequest.class)
                 .map((request) -> {
                     Query requestQuery = request.getUri().query();
-                    String url = requestQuery.getOrElse()
+                    String url = requestQuery.getOrElse(URL_NAME_PARAM, DEFAULT_URL_NAME_PARAM);
+                    int count = Integer.parseInt(requestQuery.getOrElse(COUNT_PARAM, DEFAULT_COUNT_PARAM));
+                    return new Request(url, count);
                 })
+                .mapAsync(ASYNC_NUMBER, (request) -> Patterns.ask(cacheActor, request, TIMEOUT)
+                        .thenC)
     }
 
 }
