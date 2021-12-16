@@ -21,7 +21,7 @@ public class Server {
         final Http http = Http.get(system);
         final ActorMaterializer materializer = ActorMaterializer.create(system);
         final Ping ping = new Ping(system);
-        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = ping.;//METHOD
+        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = ping.;
     }
 
 }
