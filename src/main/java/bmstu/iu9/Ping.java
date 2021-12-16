@@ -4,12 +4,11 @@ import akka.NotUsed;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
+import akka.http.javadsl.model.Query;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
-import bmstu.iu9.requests.Request;
+import akka.http.javadsl.model.*;
 
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 
 public class Ping {
 
@@ -21,9 +20,10 @@ public class Ping {
 
     public Flow<HttpRequest, HttpResponse, NotUsed> httpFlow(ActorMaterializer materializer) {
         return Flow
-                .of(Request.class)
+                .of(HttpRequest.class)
                 .map((request) -> {
-                    Query requestQuery = request.getUrl().query();
+                    Query requestQuery = request.getUri().query();
+                    String url = requestQuery
                 })
     }
 
