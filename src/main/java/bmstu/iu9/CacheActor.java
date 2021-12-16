@@ -2,6 +2,7 @@ package bmstu.iu9;
 
 import akka.actor.AbstractActor;
 import akka.japi.pf.ReceiveBuilder;
+import bmstu.iu9.requests.Answer;
 import bmstu.iu9.requests.Request;
 
 import java.util.HashMap;
@@ -17,7 +18,7 @@ public class CacheActor extends AbstractActor {
         return ReceiveBuilder.create()
                 .match(Request.class, (request) -> {
                     Long requestResult = cache.getOrDefault(request.getUrl(), DEFAULT_VALUE);
-                    sender().tell(new );
+                    sender().tell(new Answer(request.getUrl(), requestResult), self());
                 })
     }
 
