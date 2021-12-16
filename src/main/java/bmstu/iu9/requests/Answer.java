@@ -2,8 +2,8 @@ package bmstu.iu9.requests;
 
 public class Answer {
 
-    private String url;
-    private Long responseTime;
+    private final String url;
+    private final Long responseTime;
 
     public Answer(String url, Long responseTime) {
         this.url = url;
