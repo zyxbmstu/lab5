@@ -6,6 +6,7 @@ import akka.actor.ActorSystem;
 import akka.actor.Props;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
+import bmstu.iu9.requests.Request;
 
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -19,7 +20,11 @@ public class Ping {
     }
 
     public Flow<HttpRequest, HttpResponse, NotUsed> httpFlow(ActorMaterializer materializer) {
-        return 
+        return Flow
+                .of(Request.class)
+                .map((request) -> {
+                    Query requestQuery = request.getUrl().query();
+                })
     }
 
 }
