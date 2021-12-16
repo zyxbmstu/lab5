@@ -1,2 +1,4 @@
-package bmstu.iu9;public class Server {
+package bmstu.iu9;
+
+public class Server {
 }
