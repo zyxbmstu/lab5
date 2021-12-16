@@ -4,6 +4,7 @@ import akka.NotUsed;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
+import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
 
 import java.net.http.HttpRequest;
@@ -17,6 +18,8 @@ public class Ping {
         cacheActor = system.actorOf(Props.create(CacheActor.class));
     }
 
-    public Flow<HttpRequest, HttpResponse, NotUsed> 
+    public Flow<HttpRequest, HttpResponse, NotUsed> httpFlow(ActorMaterializer materializer) {
+        return 
+    }
 
 }
