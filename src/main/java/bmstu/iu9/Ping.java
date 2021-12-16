@@ -1,8 +1,13 @@
 package bmstu.iu9;
 
+import akka.NotUsed;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
+import akka.stream.javadsl.Flow;
+
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 
 public class Ping {
 
@@ -11,5 +16,7 @@ public class Ping {
     public Ping(ActorSystem system) {
         cacheActor = system.actorOf(Props.create(CacheActor.class));
     }
+
+    public Flow<HttpRequest, HttpResponse, NotUsed> 
 
 }
