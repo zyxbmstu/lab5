@@ -8,12 +8,13 @@ import akka.http.javadsl.model.Query;
 import akka.pattern.Patterns;
 import akka.stream.ActorMaterializer;
 import akka.http.javadsl.model.*;
+import bmstu.iu9.requests.Answer;
 import bmstu.iu9.requests.Request;
 import akka.stream.javadsl.Flow;
 
 import java.time.Duration;
 import java.util.Collections;
-
+import java.util.concurrent.CompletableFuture;
 
 
 public class Ping {
@@ -42,8 +43,20 @@ public class Ping {
                 })
                 .mapAsync(ASYNC_NUMBER, (request) -> Patterns.ask(cacheActor, request, TIMEOUT)
                         .thenCompose((requestResult) -> {
-
+                            Answer cacheAnswer = (Answer) requestResult;
+                            return cacheAnswer.getResponseTime() == -1
+                                    ?
+                                    : CompletableFuture.completedFuture(cacheAnswer);
                         }))
+                .map((result) -> {
+                    cacheActor.tell(result, ActorRef.noSender());
+                    return HttpResponse.create().withStatus(StatusCodes.OK)
+                            .withEntity(
+                                    HttpEntities.create(
+                                            "URL: " + result.getUrl() + " TIME: " + result.getResponseTime()
+                                    )
+                            );
+                });
     }
 
 }
