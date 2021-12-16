@@ -6,7 +6,6 @@ import akka.actor.ActorSystem;
 import akka.actor.Props;
 import akka.http.javadsl.model.Query;
 import akka.pattern.Patterns;
-import akka.stream.ActorMaterializer;
 import akka.http.javadsl.model.*;
 import akka.stream.Materializer;
 import akka.stream.javadsl.Keep;
