@@ -32,6 +32,8 @@ public class Ping {
         cacheActor = system.actorOf(Props.create(CacheActor.class));
     }
 
+
+
     public Flow<HttpRequest, HttpResponse, NotUsed> httpFlow(ActorMaterializer materializer) {
         return Flow
                 .of(HttpRequest.class)
