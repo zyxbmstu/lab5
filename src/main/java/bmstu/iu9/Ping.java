@@ -88,7 +88,7 @@ public class Ping {
                     return HttpResponse.create().withStatus(StatusCodes.OK)
                             .withEntity(
                                     HttpEntities.create(
-                                            "URL: " + result.getUrl() + " TIME: " + result.getResponseTime()
+                                            "URL: " + result.getUrl() + " RESPONSE TIME: " + result.getResponseTime()
                                     )
                             );
                 });
