@@ -67,7 +67,7 @@ public class Ping {
                 ));
     }
 
-    public Flow<HttpRequest, HttpResponse, NotUsed> httpFlow(ActorMaterializer materializer) {
+    public Flow<HttpRequest, HttpResponse, NotUsed> httpFlow(Materializer materializer) {
         return Flow
                 .of(HttpRequest.class)
                 .map((request) -> {
